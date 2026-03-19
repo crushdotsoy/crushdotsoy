@@ -15,15 +15,14 @@ const link = variant === 'repo' ? repoUrl : orgUrl;
 const linkLabel = variant === 'repo' ? 'View on GitHub →' : 'Visit our GitHub →';
 const title = variant === 'repo'
   ? 'Open source & MIT licensed 🩷'
-  : 'Everything we build is open source ✨';
+  : 'Everything we build is<br />open source ✨';
 const body = variant === 'repo'
   ? 'Fast Renamer is free forever, MIT licensed, and built in the open. Contributions, issues, and stars are always welcome!'
-  : 'We believe the best tools are free and open. Every project we ship is open source and free to use, forever. That\'s the crush.soy promise.';
+  : 'We believe the best tools are free and open. Every project we ship is open source and free to use, forever. That\'s our promise.';
 ---
 
 <section class="bg-[#2D2640] rounded-3xl p-10 text-center flex flex-col items-center gap-6">
-  <h2 data-reveal="up" class="font-heading text-2xl sm:text-3xl font-black text-[#FEFCFF]">
-    {title}
+  <h2 data-reveal="up" class="font-heading text-2xl sm:text-3xl font-black text-[#FEFCFF]" set:html={title}>
   </h2>
   <p data-reveal="up" style="--reveal-delay: 90ms;" class="text-[#C8C5F5]/80 max-w-xl leading-relaxed">
     {body}

@@ -22,12 +22,34 @@ const isHome = currentPath === '/';
   <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
     {isHome ? (
       <span aria-current="page" class="flex items-center gap-2 select-default cursor-default">
-        <Image src={logo} alt="crush.soy" width={36} height={36} loading="eager" fetchpriority="high" class="h-9 w-9 drop-shadow-sm" />
+        <span class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.42)_0%,rgba(255,255,255,0.16)_48%,rgba(200,197,245,0)_82%)]">
+          <Image
+            src={logo}
+            alt="crush.soy"
+            width={40}
+            height={40}
+            loading="eager"
+            fetchpriority="high"
+            class="h-10 w-10 rounded-xl"
+            style="-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 56%, rgba(0,0,0,0.72) 74%, rgba(0,0,0,0) 100%); mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 56%, rgba(0,0,0,0.72) 74%, rgba(0,0,0,0) 100%);"
+          />
+        </span>
         <span class="font-heading font-black text-xl text-[#2D2640] tracking-tight">crush.soy</span>
       </span>
     ) : (
       <a href="/" aria-label="crush.soy home" class="flex items-center gap-2 group">
-        <Image src={logo} alt="crush.soy" width={36} height={36} loading="eager" fetchpriority="high" class="h-9 w-9 drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+        <span class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.42)_0%,rgba(255,255,255,0.16)_48%,rgba(200,197,245,0)_82%)]">
+          <Image
+            src={logo}
+            alt="crush.soy"
+            width={40}
+            height={40}
+            loading="eager"
+            fetchpriority="high"
+            class="h-10 w-10 rounded-xl"
+            style="-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 56%, rgba(0,0,0,0.72) 74%, rgba(0,0,0,0) 100%); mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 56%, rgba(0,0,0,0.72) 74%, rgba(0,0,0,0) 100%);"
+          />
+        </span>
         <span class="font-heading font-black text-xl text-[#2D2640] tracking-tight">crush.soy</span>
       </a>
     )}

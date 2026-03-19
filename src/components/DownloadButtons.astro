@@ -2,19 +2,29 @@
 import PlatformIcon from './PlatformIcon.astro';
 import type { Platform } from '../types/platform';
 
-const releasesUrl = 'https://github.com/crushdotsoy/fastrenamer/releases';
-
 const platforms = [
-  { label: 'macOS', platform: 'macOS' },
-  { label: 'Windows', platform: 'Windows' },
-  { label: 'Linux', platform: 'Linux' },
-] satisfies { label: string; platform: Platform }[];
+  {
+    label: 'macOS',
+    platform: 'macOS',
+    href: 'https://github.com/crushdotsoy/fastrenamer/releases/latest/download/Fast.Renamer-latest-arm64.dmg',
+  },
+  {
+    label: 'Windows',
+    platform: 'Windows',
+    href: 'https://github.com/crushdotsoy/fastrenamer/releases/latest/download/Fast.Renamer-latest-x64.exe',
+  },
+  {
+    label: 'Linux',
+    platform: 'Linux',
+    href: 'https://github.com/crushdotsoy/fastrenamer/releases/latest/download/Fast.Renamer-latest.AppImage',
+  },
+] satisfies { label: string; platform: Platform; href: string }[];
 ---
 
 <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
   {platforms.map((p, index) => (
     <a
-      href={releasesUrl}
+      href={p.href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Download Fast Renamer for ${p.label}`}
