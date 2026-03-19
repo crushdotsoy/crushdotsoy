@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <!-- Heart gradient: light peach highlight → warm pink → deeper pink -->
+    <radialGradient id="heartGrad" cx="42%" cy="30%" r="65%" fx="38%" fy="25%">
+      <stop offset="0%"   stop-color="#FFD6DC"/>
+      <stop offset="35%"  stop-color="#FFB3C2"/>
+      <stop offset="70%"  stop-color="#F4879E"/>
+      <stop offset="100%" stop-color="#E07090"/>
+    </radialGradient>
+    <!-- Subtle inner highlight shimmer -->
+    <radialGradient id="shineGrad" cx="35%" cy="28%" r="40%">
+      <stop offset="0%"  stop-color="#fff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Glow behind heart -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#F4A0B5" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#F4A0B5" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Shadow gradient -->
+    <linearGradient id="shadowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#8B7EC8" stop-opacity="0.0"/>
+      <stop offset="30%" stop-color="#8B7EC8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8B7EC8" stop-opacity="0.0"/>
+    </linearGradient>
+    <filter id="blur4" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Soft drop shadow / cast shadow (elongated ellipse, tilted) -->
+  <ellipse cx="52" cy="100" rx="32" ry="7" fill="url(#shadowGrad)" filter="url(#blur4)" transform="rotate(-15 52 100)"/>
+
+  <!-- Glow halo behind heart -->
+  <ellipse cx="56" cy="62" rx="36" ry="33" fill="url(#glowGrad)" filter="url(#blur4)"/>
+
+  <!-- Heart shape (slightly tilted -8°) -->
+  <g transform="rotate(-8 60 62)">
+    <!-- Heart path — two bumps + V bottom -->
+    <path
+      d="M60 85
+         C60 85 28 68 28 50
+         C28 40.5 35.6 33 44.5 33
+         C50.2 33 55.2 36.2 58 40.8
+         C58.8 38.5 60.8 36.5 63 35.1
+         C65.6 33.4 68.8 33 72 33.5
+         C79.8 34.8 86 41.5 86 50
+         C86 68 60 85 60 85Z"
+      fill="url(#heartGrad)"
+    />
+    <!-- Shine overlay -->
+    <path
+      d="M60 85
+         C60 85 28 68 28 50
+         C28 40.5 35.6 33 44.5 33
+         C50.2 33 55.2 36.2 58 40.8
+         C58.8 38.5 60.8 36.5 63 35.1
+         C65.6 33.4 68.8 33 72 33.5
+         C79.8 34.8 86 41.5 86 50
+         C86 68 60 85 60 85Z"
+      fill="url(#shineGrad)"
+    />
+
+    <!-- Eyes -->
+    <circle cx="49" cy="56" r="3" fill="#3D2B3D"/>
+    <circle cx="65" cy="54" r="3" fill="#3D2B3D"/>
+    <!-- Eye shine dots -->
+    <circle cx="50.2" cy="55" r="1" fill="#fff" opacity="0.7"/>
+    <circle cx="66.2" cy="53" r="1" fill="#fff" opacity="0.7"/>
+
+    <!-- Smile -->
+    <path d="M50 64 Q57 70 66 63" stroke="#3D2B3D" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Sparkle large (upper right) -->
+  <g transform="translate(88, 32)">
+    <path d="M0 -10 L1.5 -1.5 L10 0 L1.5 1.5 L0 10 L-1.5 1.5 L-10 0 L-1.5 -1.5Z"
+          fill="#fff" opacity="0.95"/>
+  </g>
+  <!-- Sparkle medium (lower right) -->
+  <g transform="translate(97, 68)">
+    <path d="M0 -7 L1 -1 L7 0 L1 1 L0 7 L-1 1 L-7 0 L-1 -1Z"
+          fill="#fff" opacity="0.85"/>
+  </g>
+  <!-- Sparkle tiny (upper left area) -->
+  <g transform="translate(22, 28)">
+    <path d="M0 -5 L0.8 -0.8 L5 0 L0.8 0.8 L0 5 L-0.8 0.8 L-5 0 L-0.8 -0.8Z"
+          fill="#fff" opacity="0.7"/>
+  </g>
+</svg>

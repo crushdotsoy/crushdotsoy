@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+const projects = [
+  {
+    label: 'Fast Renamer',
+    href: '/fast-renamer',
+    description: 'Bulk rename files. Fast. Free. Open.',
+  },
+];
+
+const navLinks = [
+  { label: 'GitHub', href: 'https://github.com/crushdotsoy', external: true },
+];
+
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#C8C5F5]/80 border-b border-[#A9A5E8]/40">
+  <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    {isHome ? (
+      <span aria-current="page" class="flex items-center gap-2 select-default cursor-default">
+        <Image src={logo} alt="crush.soy" width={36} height={36} loading="eager" fetchpriority="high" class="h-9 w-9 drop-shadow-sm" />
+        <span class="font-heading font-black text-xl text-[#2D2640] tracking-tight">crush.soy</span>
+      </span>
+    ) : (
+      <a href="/" aria-label="crush.soy home" class="flex items-center gap-2 group">
+        <Image src={logo} alt="crush.soy" width={36} height={36} loading="eager" fetchpriority="high" class="h-9 w-9 drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
+        <span class="font-heading font-black text-xl text-[#2D2640] tracking-tight">crush.soy</span>
+      </a>
+    )}
+    <ul class="flex items-center gap-2">
+      <li class="relative group">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-2xl text-[#2D2640] font-medium text-sm hover:bg-[#F4A0B5]/40 hover:text-[#2D2640] transition-all duration-200 cursor-pointer inline-flex items-center gap-2 group-hover:bg-[#F4A0B5]/40 focus-visible:bg-[#F4A0B5]/40 focus-visible:outline-none"
+          aria-haspopup="menu"
+        >
+          <span>Projects</span>
+          <svg class="h-4 w-4 opacity-70 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5 10 12.5 15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="invisible absolute right-0 top-full mt-3 w-72 translate-y-1 rounded-3xl border border-[#A9A5E8]/50 bg-[#FEFCFF]/95 p-2 opacity-0 shadow-lavender backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          {projects.map(project => (
+            project.href === currentPath ? (
+              <span
+                aria-current="page"
+                class="block rounded-2xl px-4 py-3 text-[#2D2640] cursor-default bg-[#FDD4E0]/70"
+              >
+                <span class="block font-heading font-bold text-base">{project.label}</span>
+                <span class="mt-1 block text-xs text-[#2D2640]/65">{project.description}</span>
+              </span>
+            ) : (
+              <a
+                href={project.href}
+                aria-label={project.label}
+                class="block rounded-2xl px-4 py-3 text-[#2D2640] transition-all duration-200 hover:bg-[#FDD4E0] focus:bg-[#FDD4E0] focus:outline-none"
+              >
+                <span class="block font-heading font-bold text-base">{project.label}</span>
+                <span class="mt-1 block text-xs text-[#2D2640]/65">{project.description}</span>
+              </a>
+            )
+          ))}
+        </div>
+      </li>
+
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            aria-label={link.label}
+            class="px-4 py-2 rounded-2xl text-[#2D2640] font-medium text-sm hover:bg-[#F4A0B5]/40 hover:text-[#2D2640] transition-all duration-200"
+          >
+            {link.label}
+            {link.external && <span class="ml-1 opacity-60">↗</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

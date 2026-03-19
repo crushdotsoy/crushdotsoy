@@ -1,0 +1,44 @@
+---
+import PlatformIcon from './PlatformIcon.astro';
+import type { Platform } from '../types/platform';
+
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  platforms?: Platform[];
+  badge?: string;
+}
+
+const { name, description, href, platforms = [], badge } = Astro.props;
+---
+
+<article data-reveal="up" class="bg-[#FEFCFF] rounded-3xl p-8 shadow-lavender hover:scale-[1.02] transition-transform duration-200 flex flex-col gap-4">
+  {badge && (
+    <span class="self-start bg-[#FDD4E0] text-[#2D2640] text-xs font-bold px-3 py-1 rounded-full">
+      {badge}
+    </span>
+  )}
+
+  <h3 class="font-heading text-2xl font-black text-[#2D2640]">{name}</h3>
+
+  <p class="text-[#2D2640]/75 leading-relaxed flex-1">{description}</p>
+
+  {platforms.length > 0 && (
+    <div class="flex flex-wrap gap-2">
+      {platforms.map(p => (
+        <span class="inline-flex items-center gap-1.5 bg-[#C8C5F5] text-[#2D2640] text-xs font-semibold px-3 py-1 rounded-full">
+          <PlatformIcon platform={p} class="h-3.5 w-3.5 shrink-0" />
+          {p}
+        </span>
+      ))}
+    </div>
+  )}
+
+  <a
+    href={href}
+    class="inline-block self-start bg-[#F4A0B5] text-[#2D2640] font-heading font-bold px-6 py-3 rounded-2xl hover:scale-105 hover:bg-[#e88da0] transition-all duration-200 mt-2"
+  >
+    Learn more →
+  </a>
+</article>

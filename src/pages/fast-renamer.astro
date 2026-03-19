@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import DownloadButtons from '../components/DownloadButtons.astro';
+import OpenSourceBanner from '../components/OpenSourceBanner.astro';
+import PlatformIcon from '../components/PlatformIcon.astro';
+import type { Platform } from '../types/platform';
+
+const features = [
+  {
+    icon: '🔍',
+    title: 'Preview before rename',
+    description: 'See exactly what will change before you commit. No surprises, no accidents — just confidence.',
+  },
+  {
+    icon: '⚡',
+    title: 'Blazing fast',
+    description: 'Rename thousands of files in milliseconds. Fast Renamer lives up to its name.',
+  },
+  {
+    icon: '🧩',
+    title: 'Regex support',
+    description: 'Powerful pattern matching with full regular expression support. Replace, insert, or transform filenames exactly as you want.',
+  },
+  {
+    icon: '📦',
+    title: 'Batch operations',
+    description: 'Rename entire folders, apply rules to nested files, and handle complex rename tasks all at once.',
+  },
+  {
+    icon: '🆓',
+    title: 'Free forever',
+    description: 'No trial. No subscription. No catch. Fast Renamer is free forever, for everyone.',
+  },
+  {
+    icon: '💻',
+    title: 'Cross-platform',
+    description: 'Native apps for macOS, Windows, and Linux. One great experience everywhere.',
+  },
+];
+
+const platforms = ['macOS', 'Windows', 'Linux'] satisfies Platform[];
+---
+
+<BaseLayout
+  title="Fast Renamer — Bulk rename files. Fast. Free. Open."
+  description="Fast Renamer: the free, open-source bulk file and folder renamer for macOS, Windows, and Linux. Preview changes, use regex, rename thousands of files instantly."
+>
+  <!-- Product hero -->
+  <section class="relative overflow-hidden bg-[#C8C5F5] py-24 px-6">
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#F4A0B5]/25 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-16 -left-16 w-72 h-72 bg-[#A9A5E8]/25 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
+      <div data-reveal="up" class="inline-flex items-center gap-2 bg-[#FDD4E0] text-[#2D2640] px-4 py-2 rounded-full text-sm font-semibold">
+        ✨ Free & Open Source
+      </div>
+
+      <h1 data-reveal="up" style="--reveal-delay: 80ms;" class="font-heading text-5xl sm:text-7xl font-black text-[#2D2640] leading-tight">
+        Fast Renamer
+      </h1>
+
+      <p data-reveal="up" style="--reveal-delay: 160ms;" class="text-xl sm:text-2xl text-[#2D2640]/80 max-w-xl leading-relaxed">
+        Bulk rename files and folders.<br />
+        <span class="font-bold">Fast. Free. Open.</span>
+      </p>
+
+      <!-- Platform badges -->
+      <div data-reveal="up" style="--reveal-delay: 240ms;" class="flex flex-wrap gap-3 justify-center">
+        {platforms.map(platform => (
+          <span class="inline-flex items-center gap-2 bg-[#2D2640] text-[#FEFCFF] text-sm font-semibold px-4 py-2 rounded-full">
+            <PlatformIcon platform={platform} class="h-5 w-5 shrink-0" />
+            {platform}
+          </span>
+        ))}
+      </div>
+
+      <div data-reveal="up" style="--reveal-delay: 320ms;" class="flex flex-col sm:flex-row gap-4 mt-2">
+        <a
+          href="#downloads"
+          class="inline-block bg-[#F4A0B5] text-[#2D2640] font-heading font-bold text-lg px-8 py-4 rounded-2xl shadow-pink hover:scale-105 hover:bg-[#e88da0] transition-all duration-200"
+        >
+          Download
+        </a>
+        <a
+          href="https://github.com/crushdotsoy/fastrenamer"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-[#2D2640] text-[#FEFCFF] font-heading font-bold text-lg px-8 py-4 rounded-2xl hover:scale-105 hover:bg-[#3d3550] transition-all duration-200"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature grid -->
+  <section class="bg-[#FEFCFF] py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 data-reveal="up" class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640] mb-3">
+          Everything you need ✨
+        </h2>
+        <p data-reveal="up" style="--reveal-delay: 90ms;" class="text-[#2D2640]/65 max-w-lg mx-auto">
+          Fast Renamer is packed with features — and it's completely free.
+        </p>
+      </div>
+      <FeatureGrid features={features} />
+    </div>
+  </section>
+
+  <!-- Download section -->
+  <section id="downloads" class="scroll-mt-24 bg-[#C8C5F5] py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center flex flex-col items-center gap-8">
+      <h2 data-reveal="up" class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640]">
+        Download Fast Renamer 🩷
+      </h2>
+      <p data-reveal="up" style="--reveal-delay: 90ms;" class="text-[#2D2640]/70 max-w-md">
+        Pick your platform and start renaming. It's free, always.
+      </p>
+      <DownloadButtons />
+      <p data-reveal="up" style="--reveal-delay: 260ms;" class="text-sm text-[#2D2640]/50">
+        Latest release on GitHub &mdash; all versions available at <a href="https://github.com/crushdotsoy/fastrenamer/releases" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#F4A0B5] transition-colors">github.com/crushdotsoy/fastrenamer/releases</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Open source callout -->
+  <section class="bg-[#FEFCFF] py-20 px-6">
+    <div data-reveal="up" class="max-w-3xl mx-auto">
+      <OpenSourceBanner
+        variant="repo"
+        repoUrl="https://github.com/crushdotsoy/fastrenamer"
+      />
+    </div>
+  </section>
+</BaseLayout>

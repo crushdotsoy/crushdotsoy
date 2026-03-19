@@ -1,0 +1,23 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {features.map((feature, index) => (
+    <div data-reveal="up" style={`--reveal-delay: ${index * 70}ms;`} class="bg-[#FEFCFF] rounded-3xl p-6 shadow-lavender flex flex-col gap-3 hover:scale-[1.02] transition-transform duration-200">
+      <span class="text-3xl" aria-hidden="true">{feature.icon}</span>
+      <h3 class="font-heading text-lg font-bold text-[#2D2640]">{feature.title}</h3>
+      <p class="text-[#2D2640]/75 text-sm leading-relaxed">{feature.description}</p>
+    </div>
+  ))}
+</div>

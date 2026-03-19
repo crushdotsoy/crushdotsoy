@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProductCard from '../components/ProductCard.astro';
+import OpenSourceBanner from '../components/OpenSourceBanner.astro';
+---
+
+<BaseLayout title="crush.soy — Free. Open. Bright.">
+  <Hero />
+
+  <!-- About crush section -->
+  <section class="bg-[#FEFCFF] py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
+      <span data-reveal="up" class="text-4xl" aria-hidden="true">✨</span>
+      <h2 data-reveal="up" style="--reveal-delay: 80ms;" class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640]">
+        What is crush.soy?
+      </h2>
+      <p data-reveal="up" style="--reveal-delay: 160ms;" class="text-lg text-[#2D2640]/75 leading-relaxed max-w-xl">
+        crush.soy is an open-source-first maker building tools that are free, open, and full of joy.
+        We believe great software should be accessible to everyone — no paywalls, no tricks, just tools
+        that make your life a little brighter. 🩷
+      </p>
+      <p data-reveal="up" style="--reveal-delay: 240ms;" class="text-[#2D2640]/60 leading-relaxed max-w-xl">
+        Every product we ship is released as free, open-source software. We build in public,
+        welcome contributions, and put the community first.
+      </p>
+    </div>
+  </section>
+
+  <!-- Product spotlight -->
+  <section class="bg-[#C8C5F5] py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 data-reveal="up" class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640] mb-3">
+          Our tools ✨
+        </h2>
+        <p data-reveal="up" style="--reveal-delay: 90ms;" class="text-[#2D2640]/70">Free and open-source, always.</p>
+      </div>
+      <div class="max-w-md mx-auto">
+        <ProductCard
+          name="Fast Renamer"
+          description="Bulk rename files and folders in seconds. Preview changes before you apply, use regex patterns, and do it all for free — on macOS, Windows, and Linux."
+          href="/fast-renamer"
+          platforms={['macOS', 'Windows', 'Linux']}
+          badge="✨ Free & Open Source"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- OSS section -->
+  <section class="bg-[#FEFCFF] py-20 px-6">
+    <div data-reveal="up" class="max-w-3xl mx-auto">
+      <OpenSourceBanner variant="org" orgUrl="https://github.com/crushdotsoy" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import PlatformIcon from './PlatformIcon.astro';
+import type { Platform } from '../types/platform';
+
+const releasesUrl = 'https://github.com/crushdotsoy/fastrenamer/releases';
+
+const platforms = [
+  { label: 'macOS', platform: 'macOS' },
+  { label: 'Windows', platform: 'Windows' },
+  { label: 'Linux', platform: 'Linux' },
+] satisfies { label: string; platform: Platform }[];
+---
+
+<div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+  {platforms.map((p, index) => (
+    <a
+      href={releasesUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Download Fast Renamer for ${p.label}`}
+      data-reveal="up"
+      style={`--reveal-delay: ${index * 80}ms;`}
+      class="flex items-center gap-3 bg-[#FEFCFF] border-2 border-[#C8C5F5] text-[#2D2640] px-6 py-4 rounded-2xl font-semibold hover:border-[#F4A0B5] hover:scale-105 hover:shadow-pink transition-all duration-200 min-w-[180px] justify-center"
+    >
+      <PlatformIcon platform={p.platform} class="h-7 w-7 shrink-0" />
+      <span class="font-heading font-bold text-base">{p.label}</span>
+    </a>
+  ))}
+</div>
