@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — crush.soy" description="This page doesn't exist. But we do!">
+  <section class="relative overflow-hidden bg-[#C8C5F5] min-h-[calc(100vh-4.5rem-5.5rem)] flex items-center justify-center px-6 py-24">
+
+    <!-- Decorative blobs (mirror the Hero pattern) -->
+    <div class="absolute -top-24 -left-24 w-80 h-80 bg-[#F4A0B5]/35 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-24 -right-24 w-[28rem] h-[28rem] bg-[#A9A5E8]/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-[#FDD4E0]/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative max-w-2xl mx-auto text-center">
+
+      <!-- Floating ghost emoji -->
+      <div
+        data-reveal="up"
+        class="mb-6 inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-[#FDD4E0] shadow-pink text-5xl select-none"
+        aria-hidden="true"
+        style="--reveal-delay: 0ms; animation: float 4s ease-in-out infinite;"
+      >
+        👻
+      </div>
+
+      <!-- 404 number -->
+      <p
+        data-reveal="up"
+        style="--reveal-delay: 80ms;"
+        class="font-heading font-black text-[#F4A0B5] text-[clamp(6rem,22vw,11rem)] leading-none tracking-tighter select-none mb-0 drop-shadow-sm"
+        aria-hidden="true"
+      >
+        404
+      </p>
+
+      <!-- Heading -->
+      <h1
+        data-reveal="up"
+        style="--reveal-delay: 160ms;"
+        class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640] leading-tight mt-2 mb-5"
+      >
+        Oops! This page went poof ✨
+      </h1>
+
+      <!-- Subtext -->
+      <p
+        data-reveal="up"
+        style="--reveal-delay: 240ms;"
+        class="text-lg text-[#2D2640]/70 leading-relaxed max-w-md mx-auto mb-10"
+      >
+        Whatever you were looking for, it's not here.<br/>
+        — Maybe it never was. —<br/>
+        But don't worry, everything <em>good</em> is just one click away. 🩷
+      </p>
+
+      <!-- CTAs -->
+      <div
+        data-reveal="up"
+        style="--reveal-delay: 320ms;"
+        class="flex flex-col sm:flex-row items-center justify-center gap-4"
+      >
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 bg-[#F4A0B5] text-[#2D2640] font-heading font-bold text-lg px-8 py-4 rounded-2xl shadow-pink hover:scale-105 hover:bg-[#e88da0] transition-all duration-200 cursor-pointer"
+        >
+          ← Take me home
+        </a>
+
+      </div>
+
+      <!-- Tiny breadcrumb hint -->
+      <p
+        data-reveal="up"
+        style="--reveal-delay: 400ms;"
+        class="mt-12 text-sm text-[#2D2640]/45 font-body"
+      >
+        Lost at <code class="font-mono bg-[#A9A5E8]/25 px-2 py-0.5 rounded-lg text-xs">{Astro.url.pathname}</code>
+      </p>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50%       { transform: translateY(-14px) rotate(2deg); }
+  }
+</style>
