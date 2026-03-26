@@ -14,75 +14,96 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- Floating ghost emoji -->
       <div
-        data-reveal="up"
-        class="mb-6 inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-[#FDD4E0] shadow-pink text-5xl select-none"
+        class="reveal-1 mb-6 inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-[#FDD4E0] shadow-pink text-5xl select-none"
         aria-hidden="true"
-        style="--reveal-delay: 0ms; animation: float 4s ease-in-out infinite;"
       >
         👻
       </div>
 
       <!-- 404 number -->
       <p
-        data-reveal="up"
-        style="--reveal-delay: 80ms;"
-        class="font-heading font-black text-[#F4A0B5] text-[clamp(6rem,22vw,11rem)] leading-none tracking-tighter select-none mb-0 drop-shadow-sm"
+        class="reveal-2 font-heading font-black text-[#F4A0B5] text-[clamp(6rem,22vw,11rem)] leading-none tracking-tighter select-none mb-0 drop-shadow-sm"
         aria-hidden="true"
       >
         404
       </p>
 
       <!-- Heading -->
-      <h1
-        data-reveal="up"
-        style="--reveal-delay: 160ms;"
-        class="font-heading text-3xl sm:text-4xl font-black text-[#2D2640] leading-tight mt-2 mb-5"
-      >
+      <h1 class="reveal-3 font-heading text-3xl sm:text-4xl font-black text-[#2D2640] leading-tight mt-2 mb-5">
         Oops! This page went poof ✨
       </h1>
 
       <!-- Subtext -->
-      <p
-        data-reveal="up"
-        style="--reveal-delay: 240ms;"
-        class="text-lg text-[#2D2640]/70 leading-relaxed max-w-md mx-auto mb-10"
-      >
+      <p class="reveal-4 text-lg text-[#2D2640]/70 leading-relaxed max-w-md mx-auto mb-10">
         Whatever you were looking for, it's not here.<br/>
         — Maybe it never was. —<br/>
         But don't worry, everything <em>good</em> is just one click away. 🩷
       </p>
 
-      <!-- CTAs -->
-      <div
-        data-reveal="up"
-        style="--reveal-delay: 320ms;"
-        class="flex flex-col sm:flex-row items-center justify-center gap-4"
-      >
+      <!-- CTA -->
+      <div class="reveal-5 flex items-center justify-center">
         <a
           href="/"
           class="inline-flex items-center gap-2 bg-[#F4A0B5] text-[#2D2640] font-heading font-bold text-lg px-8 py-4 rounded-2xl shadow-pink hover:scale-105 hover:bg-[#e88da0] transition-all duration-200 cursor-pointer"
         >
           ← Take me home
         </a>
-
       </div>
 
       <!-- Tiny breadcrumb hint -->
-      <p
-        data-reveal="up"
-        style="--reveal-delay: 400ms;"
-        class="mt-12 text-sm text-[#2D2640]/45 font-body"
-      >
-        Lost at <code class="font-mono bg-[#A9A5E8]/25 px-2 py-0.5 rounded-lg text-xs">{Astro.url.pathname}</code>
+      <p class="reveal-6 mt-12 text-sm text-[#2D2640]/45 font-body">
+        Lost at <code id="lost-path" class="font-mono bg-[#A9A5E8]/25 px-2 py-0.5 rounded-lg text-xs"></code>
       </p>
+      <script is:inline>
+        document.getElementById('lost-path').textContent = window.location.pathname;
+      </script>
 
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
   @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(-2deg); }
     50%       { transform: translateY(-14px) rotate(2deg); }
+  }
+
+  .reveal-1,
+  .reveal-2,
+  .reveal-3,
+  .reveal-4,
+  .reveal-5 {
+    animation: fadeUp 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-1 { animation-delay: 0ms;   animation: fadeUp 700ms cubic-bezier(0.22, 1, 0.36, 1) both, float 4s ease-in-out 700ms infinite; }
+  .reveal-2 { animation-delay: 80ms;  }
+  .reveal-3 { animation-delay: 160ms; }
+  .reveal-4 { animation-delay: 240ms; }
+  .reveal-5 { animation-delay: 320ms; }
+  .reveal-6 { animation-delay: 400ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-1,
+    .reveal-2,
+    .reveal-3,
+    .reveal-4,
+    .reveal-5,
+    .reveal-6 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
